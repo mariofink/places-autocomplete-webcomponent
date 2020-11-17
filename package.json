@@ -1,0 +1,25 @@
+{
+  "name": "placesearch-webcomponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Mario Fink",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.3",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0",
+    "lodash": "^4.17.20"
+  }
+}
