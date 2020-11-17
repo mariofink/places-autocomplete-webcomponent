@@ -1,5 +1,6 @@
 export default class PlacesService {
   constructor(autocompleteService) {
+    if (!autocompleteService) throw new Error("NoServiceAvailable");
     this.autocompleteservice = autocompleteService;
   }
 
