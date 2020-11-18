@@ -16,10 +16,25 @@
     <places-autocomplete
       label="Find your place"
       placeholder="Type to find…"
+      id="autocomplete"
     ></places-autocomplete>
+    <div>
+      <p>Selected place:</p>
+      <pre id="placeDisplay"></pre>
+    </div>
     <script
       type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=<%=apiKey%>&libraries=places&language=de&country=de"
     ></script>
+
+    <script>
+      const ac = document.getElementById("autocomplete");
+      ac.addEventListener("place:change", (e) => {
+        console.log("SELECTED", e);
+        document.getElementById("placeDisplay").innerHTML = JSON.stringify(
+          e.detail
+        );
+      });
+    </script>
   </body>
 </html>
