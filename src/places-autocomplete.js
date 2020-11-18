@@ -31,6 +31,17 @@ export class PlacesAutocomplete extends LitElement {
       label {
         display: block;
       }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        cursor: pointer;
+        padding: 1rem;
+      }
+      li:hover {
+        background: pink;
+      }
       .selected {
         background: deeppink;
       }
@@ -49,7 +60,10 @@ export class PlacesAutocomplete extends LitElement {
       <ul>
         ${this.suggestions.map(
           (suggestion, index) =>
-            html`<li class="${index === this.selection ? "selected" : ""}">
+            html`<li
+              class="${index === this.selection ? "selected" : ""}"
+              @click=${() => this._onClick(index)}
+            >
               ${suggestion.description}
             </li>`
         )}
@@ -57,11 +71,18 @@ export class PlacesAutocomplete extends LitElement {
     `;
   }
 
-  _onEnter() {
+  _onChange() {
     const event = new CustomEvent("place:change", {
       detail: this.suggestions[this.selection],
     });
     this.dispatchEvent(event);
+  }
+
+  _onClick(selection) {
+    this.selection = selection;
+    this._onChange();
+    // focus on the input just in case, so that you could continue selection with the keyboard
+    this.shadowRoot.querySelector("input").focus();
   }
 
   _onKeyUp(e) {
@@ -77,7 +98,7 @@ export class PlacesAutocomplete extends LitElement {
         break;
 
       case "Enter":
-        this._onEnter();
+        this._onChange();
 
       default:
         this.autocomplete();
