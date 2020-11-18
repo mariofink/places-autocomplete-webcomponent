@@ -1,7 +1,8 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css, customElement } from "lit-element";
 import _ from "lodash";
 import PlacesService from "./PlacesService";
 
+@customElement("places-autocomplete")
 export class PlacesAutocomplete extends LitElement {
   static get properties() {
     return {
@@ -106,5 +107,3 @@ export class PlacesAutocomplete extends LitElement {
     }
   }
 }
-
-window.customElements.define("places-autocomplete", PlacesAutocomplete);

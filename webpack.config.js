@@ -12,6 +12,17 @@ module.exports = {
     port: 9000,
     contentBase: "./dist",
   },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+    ],
+  },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
